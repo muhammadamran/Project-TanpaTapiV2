@@ -1,0 +1,255 @@
+.font-title-menu {
+    font-family: Andale Mono, monospace;
+    font-size: 25px;
+    font-weight: 900;
+    color: #f7b600;
+}
+
+.font-desc-menu {
+    font-family: Andale Mono, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333333;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
+.btn-detail {
+    color: #f9f9ff;
+    border: none;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    background: #333333;
+    padding: 10px 40px 10px 40px;
+}
+
+.btn-detail:hover {
+    color: #f9f9ff;
+    border: none;
+    border-radius: 1px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    background: #494848;
+    padding: 10px 40px 10px 40px;
+}
+
+.how-content {
+    display: flex;
+    justify-content: center;
+    background: #3C648E;
+    color: #fff;
+    font-size: 50px;
+    font-weight: 900;
+    padding: 32px;
+    border-radius: 34px;
+}
+
+#how-oke {
+    padding: 50px;
+}
+
+@media (max-width:575.5px) {
+    #how-oke {
+        padding: 20px;
+    }
+}
+
+@media (max-width:991.5px) {
+    .how-content {
+        display: flex;
+        justify-content: center;
+        background: #3C648E;
+        color: #fff;
+        font-size: 25px;
+        font-weight: 900;
+        padding: 32px;
+        border-radius: 34px;
+    }
+}
+
+.menu-img {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-img a {
+    position: absolute;
+    bottom: 155px;
+    background: #fff;
+    width: 70px;
+    color: #333333;
+    line-height: 70px;
+    text-align: center;
+    font-size: 22px;
+    box-shadow: 0 0 25px rgb(0 0 0 / 30%);
+    z-index: 99;
+}
+
+.img-content {
+    width: 540px;
+    height: 371px;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.contact-one {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.contact-two {
+    margin-top: -195px;
+    margin-bottom: 174px;
+    z-index: 999;
+}
+
+.contact-three {
+    background-color: #000;
+    padding: 35px 35px 35px 35px;
+    font-size: 35px;
+    border-radius: 40px 0px 40px 0px;
+}
+
+.layanan-pemesanan {
+    font-size: 17px;
+}
+
+.contact-four {
+    margin-top: 15px;
+}
+
+.contact-telepon {
+    font-size: 45px;
+    font-weight:900;
+    color: #fff
+}
+
+.contact-telepon:hover {
+    font-size: 45px;
+    font-weight:900;
+    color: #ddd
+}
+
+@media (max-width:991.5px) {
+    .contact-two {
+        margin-top: -150px;
+        margin-bottom: 174px;
+        z-index: 99999999;
+    }
+}
+
+@media (max-width:544.5px) {
+    .contact-telepon {
+        font-size: 25px;
+        font-weight: 900;
+    }
+}
+
+.footer-oke {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 115px 0px 115px;
+    margin: -35px 0px -35px 0px;
+}
+
+.footer-oke-two {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 115px 0px 115px;
+    margin: 75px 0px -35px 0px;
+}
+
+.for-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 100%;
+    color: #000;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.footer-logo-oke {
+    margin-top: 0px;
+}
+
+@media (max-width:767.5px) {
+    .footer-oke {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 0px 0px 0px;
+        margin: -35px 0px -35px 0px;
+    }
+    
+    .footer-oke-two {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        margin: 75px 0px -35px 0px;
+    }
+    
+    .for-media {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 100%;
+        color: #000;
+        font-size: 20px;
+        margin: 5px;
+    }
+
+    .footer-logo-oke {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width:580.5px) {
+    .footer-oke {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 0px 0px 0px;
+        margin: -35px 0px -35px 0px;
+    }
+    
+    .footer-oke-two {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        margin: 75px 0px -35px 0px;
+    }
+    
+    .for-media {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 100%;
+        color: #000;
+        font-size: 20px;
+        margin: 5px;
+    }
+
+    .footer-logo-oke {
+        margin-top: 30px;
+    }
+}

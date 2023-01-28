@@ -18,7 +18,7 @@ $Rapps        = mysqli_fetch_array($apps);
 if ($Rapps['icon'] == NULL) {
     $icon = 'assets/deafult/icon/icon-default.png';
 } else {
-    $icon = 'assets/apps/icon/' . $Rapps['icon'];
+    $icon = 'assets/apps/t-icon/' . $Rapps['icon'];
 }
 // logoOne
 if ($Rapps['logoOne'] == NULL) {
