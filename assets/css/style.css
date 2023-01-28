@@ -316,7 +316,11 @@ button:focus {
   background-size: cover;
   background-repeat: no-repeat; }
 .banner-area .slide_bg1 {
-  background: url(../img/banner/banner-bg1.jpg); }
+  /* background: url(../img/banner/banner-bg1.jpg); } */
+  background: url(https://static.wixstatic.com/media/d97a35_7ae09036b4714f5da295077fe1bb9040~mv2_d_1888_1259_s_2.jpg/v1/fill/w_1378,h_484,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/d97a35_7ae09036b4714f5da295077fe1bb9040~mv2_d_1888_1259_s_2.jpg); 
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;}
 .banner-area .slide_bg2 {
   background: url(../img/banner/banner-bg2.jpg); }
 .banner-area .slide_bg3 {
