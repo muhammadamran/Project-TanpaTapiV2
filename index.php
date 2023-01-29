@@ -193,7 +193,7 @@
                     <font class="layanan-pemesanan">LAYANAN PEMESANAN</font>
                     <br>
                     <div class="contact-four">
-                        <a href="index.php" class="contact-telepon">
+                        <a href="tel:<?= $telp ?>" class="contact-telepon">
                             <i class="fas fa-headphones"></i>
                             <?= $telp ?>
                         </a>

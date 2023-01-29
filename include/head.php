@@ -19,7 +19,7 @@
     <!-- Tanpa Tapi CSS -->
     <link rel="stylesheet" href="assets/css/tanpatapi.css">
     <!-- Loading -->
-    <!-- <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
     <!-- Font Poppins -->
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,3 +38,12 @@
 </style>
 
 <body>
+    <div class="preloader">
+        <div class="loading">
+            <img src="<?= $logoTwo ?>" width="150px">
+            <br>
+            <br>
+            <!-- <div class="loading-divider"></div> -->
+            <font class="text-loading-wait">Please wait ...</font>
+        </div>
+    </div>
