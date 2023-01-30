@@ -74,3 +74,35 @@ if ($Rapps['address'] == NULL) {
 } else {
     $address = $Rapps['address'];
 }
+// facebook
+if ($Rapps['facebook'] == NULL) {
+    $facebook_url     = '#';
+    $facebook_display = 'style="display:none"';
+} else {
+    $facebook_url     = $Rapps['facebook'];
+    $facebook_display = 'style="display:show"';
+}
+// twitter
+if ($Rapps['twitter'] == NULL) {
+    $twitter_url     = '#';
+    $twitter_display = 'style="display:none"';
+} else {
+    $twitter_url     = $Rapps['twitter'];
+    $twitter_display = 'style="display:show"';
+}
+// instagram
+if ($Rapps['instagram'] == NULL) {
+    $instagram_url     = '#';
+    $instagram_display = 'style="display:none"';
+} else {
+    $instagram_url     = $Rapps['instagram'];
+    $instagram_display = 'style="display:show"';
+}
+// youtube
+if ($Rapps['youtube'] == NULL) {
+    $youtube_url     = '#';
+    $youtube_display = 'style="display:none"';
+} else {
+    $youtube_url     = $Rapps['youtube'];
+    $youtube_display = 'style="display:show"';
+}

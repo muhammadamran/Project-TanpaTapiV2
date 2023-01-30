@@ -1,3 +1,4 @@
+<?php $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
 <div class="right-sidebar">
     <div class="sidebar-title">
         <h3 class="weight-600 font-16 text-blue">
@@ -99,19 +100,20 @@
                 <li>
                     <div class="sidebar-small-cap">Navigation</div>
                 </li>
-                <li>
-                    <a href="calendar.html" class="dropdown-toggle no-arrow">
+                <li class="<?= $uriSegments[2] == 'index-cms.php' ? 'active' : '' ?>">
+                    <a href="index-cms.php" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-analytics-11"></span><span class="mtext">Dashboard</span>
                     </a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-about.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-content.php' ? 'show' : '' ?>">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-browser"></span><span class="mtext">Website</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="index.html">Dashboard style 1</a></li>
-                        <li><a href="index2.html">Dashboard style 2</a></li>
-                        <li><a href="index3.html">Dashboard style 3</a></li>
+                        <li><a href="cms-slide.php">Slide Background</a></li>
+                        <li><a href="cms-about.php">About us</a></li>
+                        <li><a href="cms-ourmenu.php">Our Menu</a></li>
+                        <li><a href="cms-content.php">Content</a></li>
                     </ul>
                 </li>
                 <li>
@@ -120,8 +122,8 @@
                 <li>
                     <div class="sidebar-small-cap">Setting</div>
                 </li>
-                <li>
-                    <a href="calendar.html" class="dropdown-toggle no-arrow">
+                <li class="<?= $uriSegments[2] == 'cms-settings.php' ? 'active' : '' ?>">
+                    <a href="cms-settings.php" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-settings1"></span><span class="mtext">Settings</span>
                     </a>
                 </li>

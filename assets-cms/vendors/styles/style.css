@@ -1619,7 +1619,7 @@ table.dataTable.dtr-inline.collapsed
 }
 .sidebar-menu .dropdown-toggle:hover,
 .sidebar-menu .show > .dropdown-toggle {
-  background: rgba(0, 0, 0, 0.4);
+  background: #e7aa02;
   color: #fff;
 }
 .sidebar-menu .dropdown-toggle .micon {
@@ -1749,7 +1749,7 @@ table.dataTable.dtr-inline.collapsed
 .sidebar-menu .submenu li a.active,
 .sidebar-menu .submenu li a:hover {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #ffc10780;
 }
 .sidebar-menu > ul > li > .dropdown-toggle.active {
   background-color: rgba(0, 0, 0, 0.4);
@@ -4152,4 +4152,23 @@ body.IE .register-page-wrap .container {
   .register-page-wrap .wizard-content .wizard .steps {
     display: none;
   }
+}
+
+li.active {
+  background: #f2b100;
+}
+
+.img-row-oke {
+  width: 80px;
+  height: 80px;
+  background: #dac52c;
+  border-radius: 100%;
+}
+
+.table-icon {
+  padding: 10px;
+  font-size: 20px;
+  background: #f2f2f8;
+  color: #82849a;
+  border-radius: 5px;
 }
