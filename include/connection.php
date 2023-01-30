@@ -34,15 +34,9 @@ if ($Rapps['logoTwo'] == NULL) {
 }
 // loader
 if ($Rapps['loader'] == NULL) {
-    $loader = '<svg class="circular" width="48px" height="48px">
-                    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-                    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#FDA04F" />
-                </svg>';
+    $loader = 'assets/deafult/loader/loader-default.png';
 } else {
-    $load   = $Rapps['loader'];
-    $loader = '<div class="loader-oke">
-                    <img src="assets/apps/loader/' . $load . ' style="width:80px">
-                </div>';
+    $loader = 'assets/apps/loader/' . $Rapps['loader'];
 }
 // title
 if ($Rapps['title'] == NULL) {
@@ -79,4 +73,36 @@ if ($Rapps['address'] == NULL) {
     $address = 'Street';
 } else {
     $address = $Rapps['address'];
+}
+// facebook
+if ($Rapps['facebook'] == NULL) {
+    $facebook_url     = '#';
+    $facebook_display = 'style="display:none"';
+} else {
+    $facebook_url     = $Rapps['facebook'];
+    $facebook_display = 'style="display:show"';
+}
+// twitter
+if ($Rapps['twitter'] == NULL) {
+    $twitter_url     = '#';
+    $twitter_display = 'style="display:none"';
+} else {
+    $twitter_url     = $Rapps['twitter'];
+    $twitter_display = 'style="display:show"';
+}
+// instagram
+if ($Rapps['instagram'] == NULL) {
+    $instagram_url     = '#';
+    $instagram_display = 'style="display:none"';
+} else {
+    $instagram_url     = $Rapps['instagram'];
+    $instagram_display = 'style="display:show"';
+}
+// youtube
+if ($Rapps['youtube'] == NULL) {
+    $youtube_url     = '#';
+    $youtube_display = 'style="display:none"';
+} else {
+    $youtube_url     = $Rapps['youtube'];
+    $youtube_display = 'style="display:show"';
 }

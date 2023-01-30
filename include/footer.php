@@ -37,16 +37,16 @@
         </div>
         <div class="footer-oke-two">
             <div style="display: flex;margin-left: -5px;">
-                <a href="#" class="for-media">
+                <a href="<?= $facebook_url; ?>" class="for-media" <?= $facebook_display; ?>>
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a href="#" class="for-media">
+                <a href="<?= $twitter_url; ?>" class="for-media" <?= $twitter_display; ?>>
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a href="#" class="for-media">
+                <a href="<?= $instagram_url; ?>" class="for-media" <?= $instagram_display; ?>>
                     <i class="fa fa-instagram"></i>
                 </a>
-                <a href="#" class="for-media">
+                <a href="<?= $youtube_url; ?>" class="for-media" <?= $youtube_display; ?>>
                     <i class="fa fa-youtube"></i>
                 </a>
             </div>

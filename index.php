@@ -1,10 +1,20 @@
 <?php include "include/connection.php"; ?>
 <?php include "include/head.php"; ?>
 <?php include "include/header.php"; ?>
+<?php
+$data_slide = $db->query("SELECT * FROM tb_slide WHERE status='active'");
+$slide      = mysqli_fetch_array($data_slide);
+// Images Slide
+if ($slide['images_slide'] == NULL) {
+    $images_slide = 'assets/img/Canvas.png';
+} else {
+    $images_slide = 'assets/img/' . $slide['images_slide'];
+}
+?>
 <!-- Style For Home -->
 <style>
     .banner-area .slide_bg1 {
-        background: url(https://static.wixstatic.com/media/d97a35_7ae09036b4714f5da295077fe1bb9040~mv2_d_1888_1259_s_2.jpg/v1/fill/w_1378,h_484,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/d97a35_7ae09036b4714f5da295077fe1bb9040~mv2_d_1888_1259_s_2.jpg);
+        background: url(<?= $images_slide; ?>);
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -60,67 +70,54 @@
 <section class="about-area section_gap white-bg" style="padding: 55px 0px 0px 0px;margin-bottom: 70px;" id="our-menu">
     <div class="container">
         <div class="main-title">
-            <h1 style="color: #333333;"><?= $Title_About; ?></h1>
+            <h1 style="color: #333333;">Our Menu</h1>
+            <!-- <div class="line-oke-t"></div>
+            <div class="line-oke"></div> -->
         </div>
-        <div class="row" style="display: flex;justify-content: space-between;align-items: center;margin-top:15px;margin-bottom:15px">
-            <div class="col-sm-6">
-                <!-- Title Menu -->
-                <div>
-                    <font class="font-title-menu">
-                        Title Menu
-                    </font>
+        <?php
+        $dataMenu = $db->query("SELECT * FROM tb_ourmenu WHERE status='active' ORDER BY id DESC", 0);
+        if (mysqli_num_rows($dataMenu) > 0) {
+            while ($row = mysqli_fetch_array($dataMenu)) {
+        ?>
+                <div class="row" style="display: flex;justify-content: space-between;align-items: center;margin-top:15px;margin-bottom:15px">
+                    <div class="col-sm-6">
+                        <!-- Title Menu -->
+                        <div>
+                            <font class="font-title-menu">
+                                <?= $row['title_menu']; ?>
+                            </font>
+                        </div>
+                        <!-- Description Menu -->
+                        <div style="margin-top: 15px;margin-bottom: 10px;">
+                            <p class="font-desc-menu">
+                                <?= $row['desc_menu']; ?>
+                            </p>
+                        </div>
+                        <!-- Button Detail Menu -->
+                        <div style="margin-bottom: 10px;">
+                            <a href="<?= $row['id']; ?>" class="btn-detail">Detail Menu</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="menu-img">
+                            <a href="#" data-rel="prettyPhoto" title="Menu">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <img src="assets/apps/ourmenu/<?= $row['images_menu']; ?>" alt="Menu Picture">
+                        </div>
+                    </div>
                 </div>
-                <!-- Description Menu -->
-                <div style="margin-top: 15px;margin-bottom: 10px;">
-                    <p class="font-desc-menu">
-                        Nasi kotak atau nasi box dengan pilihan menu Indonesia dan Asia popular menjadi pilihan sajian kuliner yang praktis untuk semua acara Anda.
-                    </p>
-                </div>
-                <!-- Button Detail Menu -->
-                <div style="margin-bottom: 10px;">
-                    <a href="" class="btn-detail">Detail Menu</a>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="menu-img">
-                    <a href="#" data-rel="prettyPhoto" title="Menu">
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <img src="https://static.wixstatic.com/media/d97a35_524c3f900be243a1a074cec15a821f8e~mv2_d_2472_1648_s_2.jpg/v1/crop/x_0,y_187,w_2472,h_1274/fill/w_720,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_9909-copy-NO-TIMUN.jpg" alt="Menu Picture">
-                </div>
-            </div>
-        </div>
-        <div class="row" style="display: flex;justify-content: space-between;align-items: center;margin-top:15px;margin-bottom:15px">
-            <div class="col-sm-6">
-                <!-- Title Menu -->
-                <div>
-                    <font class="font-title-menu">
-                        Title Menu
-                    </font>
-                </div>
-                <!-- Description Menu -->
-                <div style="margin-top: 15px;margin-bottom: 10px;">
-                    <p class="font-desc-menu">
-                        Nasi kotak atau nasi box dengan pilihan menu Indonesia dan Asia popular menjadi pilihan sajian kuliner yang praktis untuk semua acara Anda.
-                    </p>
-                </div>
-                <!-- Button Detail Menu -->
-                <div style="margin-bottom: 10px;">
-                    <a href="" class="btn-detail">Detail Menu</a>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="menu-img">
-                    <a href="#" data-rel="prettyPhoto" title="Menu">
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <img src="https://static.wixstatic.com/media/d97a35_524c3f900be243a1a074cec15a821f8e~mv2_d_2472_1648_s_2.jpg/v1/crop/x_0,y_187,w_2472,h_1274/fill/w_720,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_9909-copy-NO-TIMUN.jpg" alt="Menu Picture">
-                </div>
-            </div>
-        </div>
+            <?php } ?>
+        <?php } else { ?>
+            <center>
+                <font style="font-size: 50px;font-family:Brush Script MT, Brush Script Std, cursive;color: #333333;">Data Not Found</font>
+                <br>
+                <br>
+                <img src="assets/menu.jpg" style="width: 170px;" alt="Menu">
+            </center>
+        <?php } ?>
     </div>
 </section>
-
 
 <section class="pb_section cover-bg-opacity-3" style="background-color: #fff;margin-top: 45px;margin-bottom: 120px;">
     <div class="container" style="border: 2px solid #3c648e;border-radius: 25px;">
@@ -181,7 +178,6 @@
         </div>
     </div>
 </section>
-
 <!-- End Our Menu -->
 
 <!-- Contact us -->
@@ -208,15 +204,79 @@
 <section class="pb_section cover-bg-opacity-3" style="background-color: #fff;margin-top: 45px;margin-bottom: 45px;">
     <div class="container">
         <div class="row">
+            <?php
+            $data_content = $db->query("SELECT * FROM tb_content ORDER BY id DESC LIMIT 1");
+            $content      = mysqli_fetch_array($data_content);
+
+            // Content ONE
+            // ICON
+            if ($content['icon_one'] == NULL) {
+                $icon_one = 'assets/images/money.png';
+            } else {
+                $icon_one = 'assets/content/one/' . $content['icon_one'];
+            }
+            // CONTENT
+            if ($content['content_one'] == NULL) {
+                $content_one = 'Title Content 1';
+            } else {
+                $content_one = $content['content_one'];
+            }
+            // DESC
+            if ($content['desc_one'] == NULL) {
+                $desc_one = 'Description Content 1';
+            } else {
+                $desc_one = $content['desc_one'];
+            }
+
+            // Content TWO
+            // ICON
+            if ($content['icon_two'] == NULL) {
+                $icon_two = 'assets/images/combine.png';
+            } else {
+                $icon_two = 'assets/content/two/' . $content['icon_two'];
+            }
+            // CONTENT
+            if ($content['content_two'] == NULL) {
+                $content_two = 'Title Content 2';
+            } else {
+                $content_two = $content['content_two'];
+            }
+            // DESC
+            if ($content['desc_two'] == NULL) {
+                $desc_two = 'Description Content 2';
+            } else {
+                $desc_two = $content['desc_two'];
+            }
+
+            // Content THREE
+            // ICON
+            if ($content['icon_three'] == NULL) {
+                $icon_three = 'assets/images/diamond.png';
+            } else {
+                $icon_three = 'assets/content/two/' . $content['icon_three'];
+            }
+            // CONTENT
+            if ($content['content_three'] == NULL) {
+                $content_three = 'Title Content 3';
+            } else {
+                $content_three = $content['content_three'];
+            }
+            // DESC
+            if ($content['desc_three'] == NULL) {
+                $desc_three = 'Description Content 3';
+            } else {
+                $desc_three = $content['desc_three'];
+            }
+            ?>
             <div class="col-md">
                 <div class="media d-block text-center testimonial_v1 pb_quote_v1">
                     <div class="media-body">
-                        <img class="d-flex text-center mx-auto mb-3" src="assets/images/money.png" alt="Generic placeholder image">
+                        <img class="d-flex text-center mx-auto mb-3" src="<?= $icon_one; ?>" alt="Generic placeholder image">
                         <div style="margin-top:50px;margin-bottom:50px">
-                            <font style="font-weight: 500;font-size: 30px;color: #000;">HARGA</font>
+                            <font style="font-weight: 500;font-size: 30px;color: #000;"><?= $content_one ?></font>
                         </div>
                         <p style="line-height: 25px;color: #000;margin-top: 10px;">
-                            TanpaTapi menyajikan makanan Asia dan Indonesia dengan citarasa terbaik, porsi yang generous dengan harga yang ekonomis.
+                            <?= $desc_one ?>
                         </p>
                     </div>
                 </div>
@@ -224,13 +284,12 @@
             <div class="col-md">
                 <div class="media d-block text-center testimonial_v1 pb_quote_v1">
                     <div class="media-body">
-                        <img class="d-flex text-center mx-auto mb-3" src="assets/images/combine.png" alt="Generic placeholder image">
+                        <img class="d-flex text-center mx-auto mb-3" src="<?= $icon_two; ?>" alt="Generic placeholder image">
                         <div style="margin-top:50px;margin-bottom:50px">
-                            <font style="font-weight: 500;font-size: 30px;color: #000;">VARIASI</font>
+                            <font style="font-weight: 500;font-size: 30px;color: #000;"><?= $content_two; ?></font>
                         </div>
-
                         <p style="line-height: 25px;color: #000;margin-top: 10px;">
-                            Jenis masakan yang bervariasi dari berbagai daerah di Indonesia dan Asia yang disesuaikan dengan lidah orang Indonesia menjadi keunggulan dari TanpaTapi.
+                            <?= $desc_two; ?>
                         </p>
                     </div>
                 </div>
@@ -238,13 +297,12 @@
             <div class="col-md">
                 <div class="media d-block text-center testimonial_v1 pb_quote_v1">
                     <div class="media-body">
-                        <img class="d-flex text-center mx-auto mb-3" src="assets/images/diamond.png" alt="Generic placeholder image">
+                        <img class="d-flex text-center mx-auto mb-3" src="<?= $icon_three; ?>" alt="Generic placeholder image">
                         <div style="margin-top:50px;margin-bottom:50px">
-                            <font style="font-weight: 500;font-size: 30px;color: #000;">TAMPILAN</font>
+                            <font style="font-weight: 500;font-size: 30px;color: #000;"><?= $content_three; ?></font>
                         </div>
-
                         <p style="line-height: 25px;color: #000;margin-top: 10px;">
-                            Packaging kotak yang cantik dan terkesan mewah membuat TanpaTapi sangat ideal untuk melengkapi berbagai acara perayaan yang diperlukan oleh customer.
+                            <?= $desc_three; ?>
                         </p>
                     </div>
                 </div>

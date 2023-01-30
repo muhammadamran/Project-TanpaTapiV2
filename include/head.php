@@ -40,10 +40,10 @@
 <body>
     <div class="preloader">
         <div class="loading">
-            <img src="<?= $logoTwo ?>" width="150px">
+            <img src="<?= $loader ?>" width="150px">
             <br>
             <br>
             <!-- <div class="loading-divider"></div> -->
-            <font class="text-loading-wait">Please wait ...</font>
+            <!-- <font class="text-loading-wait">Please wait ...</font> -->
         </div>
     </div>
