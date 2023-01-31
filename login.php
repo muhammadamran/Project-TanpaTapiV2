@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['username'] = $user;
 		header("Location: ./index-cms.php?SignInsuccess=true");
 	} else {
-		header("Location: ./login.php?Danger");
+		header("Location: ./login.php?Failed");
 	}
 }
 ?>
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 	<link rel="stylesheet" type="text/css" href="assets-cms/vendors/styles/style.css">
 </head>
 
-<body class="login-page">
+<body class="login-page" style="background-color: #F7B600;">
 	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
 		<div class="container">
 			<div class="row align-items-center">
@@ -42,6 +42,18 @@ if (isset($_POST['submit'])) {
 						<div class="login-title">
 							<h2 class="text-center text-dark">Sign In To<br>Management System</h2>
 						</div>
+						<!-- Failed -->
+						<?php if (isset($_GET['Failed'])) { ?>
+							<hr>
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<strong>Failed!</strong> Please check your username or password.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<hr>
+							<!-- End Failed -->
+						<?php } ?>
 						<form action="" method="POST">
 							<div class="input-group custom">
 								<input type="text" class="form-control form-control-lg" name="username" placeholder="Username">
@@ -50,16 +62,24 @@ if (isset($_POST['submit'])) {
 								</div>
 							</div>
 							<div class="input-group custom">
-								<input type="password" class="form-control form-control-lg" name="password" placeholder="**********">
+								<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="**********">
 								<div class="input-group-append custom">
 									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6">
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="customCheck1" onclick="myFunction()">
+										<label class="custom-control-label" for="customCheck1">Show password</label>
+									</div>
 								</div>
 							</div>
 							<div class="row pb-30">
 								<div class="col-6">
 									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="customCheck1">
-										<label class="custom-control-label" for="customCheck1">Remember</label>
+										<input type="checkbox" class="custom-control-input" id="customCheck2">
+										<label class="custom-control-label" for="customCheck2">Remember</label>
 									</div>
 								</div>
 								<div class="col-6">
@@ -84,6 +104,17 @@ if (isset($_POST['submit'])) {
 	<script src="assets-cms/vendors/scripts/script.min.js"></script>
 	<script src="assets-cms/vendors/scripts/process.js"></script>
 	<script src="assets-cms/vendors/scripts/layout-settings.js"></script>
+	<!-- Show Password -->
+	<script type="text/javascript">
+		function myFunction() {
+			var x = document.getElementById("password");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
+	</script>
 </body>
 
 </html>

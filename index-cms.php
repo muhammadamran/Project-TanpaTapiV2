@@ -5,7 +5,7 @@
 <?php include "include-cms/sidebar.php"; ?>
 <div class="main-container">
     <div class="pd-ltr-20">
-        <div class="card-box pd-20 height-100-p mb-30">
+        <div class="card-box pd-20 height-100-p mb-30" style="background: linear-gradient(45deg, #ffc10775, #f7b60078);">
             <div class="row align-items-center">
                 <div class="col-md-4">
                     <center>
