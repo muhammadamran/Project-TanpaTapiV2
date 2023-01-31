@@ -285,7 +285,6 @@ button:focus {
 .header_area .navbar .nav .nav-item.active .nav-link {
   color: #F7B600;
   font-weight: 900;
-  text-shadow: 0px 1px 5px #00000040;
 }
 .header_area .navbar .nav .nav-item.submenu {
   position: relative;

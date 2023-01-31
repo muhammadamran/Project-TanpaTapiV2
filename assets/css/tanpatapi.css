@@ -317,3 +317,19 @@
     margin-left: -5px;
     border-radius: 50%;
 }
+
+#call-to-action {
+    background: #333;
+    background-size: cover;
+    padding: 65px 0px 35px 0px;
+    margin-top: 177px;
+}
+
+@media (max-width:991.5px) {
+    #call-to-action {
+        background: #333;
+        background-size: cover;
+        padding: 65px 0px 35px 0px;
+        margin-top: 112px;
+    }
+}

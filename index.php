@@ -113,7 +113,7 @@ if ($slide['images_slide'] == NULL) {
                 <font style="font-size: 50px;font-family:Brush Script MT, Brush Script Std, cursive;color: #333333;">Data Not Found</font>
                 <br>
                 <br>
-                <img src="assets/menu.jpg" style="width: 170px;" alt="Menu">
+                <img src="assets/menu/menu.jpg" style="width: 170px;" alt="Menu">
             </center>
         <?php } ?>
     </div>
@@ -199,7 +199,6 @@ if ($slide['images_slide'] == NULL) {
         </div>
     </div>
 </section>
-
 
 <section class="pb_section cover-bg-opacity-3" style="background-color: #fff;margin-top: 45px;margin-bottom: 45px;">
     <div class="container">
