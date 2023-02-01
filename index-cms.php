@@ -5,7 +5,7 @@ include "include-cms/head.php";
 include "include-cms/alert.php";
 include "include-cms/dataTablesCSS.php";
 ?>
-<title>Dashboard - <?= $app ?> | General Management</title>
+<title>Dashboard - <?= $app ?> | Management System</title>
 <div class="dashboard-main-wrapper">
     <?php include "include-cms/header.php"; ?>
     <?php include "include-cms/sidebar.php"; ?>
@@ -23,7 +23,7 @@ include "include-cms/dataTablesCSS.php";
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #003369;">Dashboard </h2>
+                                        <h2 class="pageheader-title" style="color: #f7b600;">Dashboard </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>DASHBOARD</font>

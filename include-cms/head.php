@@ -98,7 +98,7 @@ function Rupiah($angka)
         <div class="loading">
             <img src="<?= $loader; ?>" width="150">
             <br>
-            <div class="loading-divider"></div>
-            <font class="text-loading-wait">Please wait ...</font>
+            <!-- <div class="loading-divider"></div> -->
+            <!-- <font class="text-loading-wait">Please wait ...</font> -->
         </div>
     </div>

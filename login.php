@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Login - <?= $Rapps['app_name'] ?> | General Management</title>
+	<title>Login - <?= $Rapps['app_name'] ?> | Management System</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="assets-cms/apps/icon/logo.png">
 	<link rel="stylesheet" href="assets-cms/vendor/bootstrap/css/bootstrap.min.css">
 	<link href="assets-cms/vendor/fonts/circular-std/style.css" rel="stylesheet">
@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
 		/* Success */
 		.alert-success {
 			padding: 20px;
-			background-color: #003369;
+			background-color: #f7b600;
 			color: white;
 		}
 
@@ -120,9 +120,6 @@ if (isset($_POST['submit'])) {
 	<div class="preloader">
 		<div class="loading">
 			<img src="<?= $loader ?>" width="150">
-			<br>
-			<div class="loading-divider"></div>
-			<font class="text-loading-wait">Please wait ...</font>
 		</div>
 	</div>
 	<div class="splash-container">

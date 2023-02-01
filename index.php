@@ -8,7 +8,7 @@ $slide      = mysqli_fetch_array($data_slide);
 if ($slide['images_slide'] == NULL) {
     $images_slide = 'assets/img/Canvas.png';
 } else {
-    $images_slide = 'assets/img/' . $slide['images_slide'];
+    $images_slide = 'assets/img/slide/' . $slide['images_slide'];
 }
 ?>
 <!-- Style For Home -->

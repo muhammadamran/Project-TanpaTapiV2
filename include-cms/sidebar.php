@@ -6,7 +6,7 @@ include 'include/connection.php';
 <div class="nav-left-sidebar sidebar-light">
     <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="d-xl-none d-lg-none" href="#" style="font-size: 18px;font-weight: bolder;color:#003369">NAVIGATION</a>
+            <a class="d-xl-none d-lg-none" href="#" style="font-size: 18px;font-weight: bolder;color:#f7b600">NAVIGATION</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,35 +35,30 @@ include 'include/connection.php';
                     <!-- END Dashboard -->
                     <!-- REFERENCES -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_room_loc.php' || $uriSegments[2] == 'references_costcenter.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
                             <i class="fas fa-globe" id="sidebar-font"></i>
                             <span>Website</span>
                         </a>
-                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'references_bu.php' || $uriSegments[2] == 'references_positions.php' || $uriSegments[2] == 'references_branch.php' || $uriSegments[2] == 'references_room_loc.php' || $uriSegments[2] == 'references_costcenter.php'  ? 'show' : '' ?>">
+                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php'  ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_bu.php' ? 'active' : '' ?>" href="references_bu.php">
-                                        <span>B.U & Functional</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'cms-slide.php' ? 'active' : '' ?>" href="cms-slide.php">
+                                        <span>Silde Home</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_positions.php' ? 'active' : '' ?>" href="references_positions.php">
-                                        <span>Dept. & Positions</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'cms-aboutus.php' ? 'active' : '' ?>" href="cms-aboutus.php">
+                                        <span>About Us</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_branch.php' ? 'active' : '' ?>" href="references_branch.php">
-                                        <span>Branch</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'cms-ourmenu.php' ? 'active' : '' ?>" href="cms-ourmenu.php">
+                                        <span>Our Menu</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_room_loc.php' ? 'active' : '' ?>" href="references_room_loc.php">
-                                        <span>Room Location</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link <?= $uriSegments[2] == 'references_costcenter.php' ? 'active' : '' ?>" href="references_costcenter.php">
-                                        <span>Cost Center</span>
+                                    <a class="nav-link <?= $uriSegments[2] == 'cms-contactus.php' ? 'active' : '' ?>" href="cms-contactus.php">
+                                        <span>Contact Us</span>
                                     </a>
                                 </li>
                             </ul>

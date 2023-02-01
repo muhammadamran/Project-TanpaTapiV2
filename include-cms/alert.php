@@ -2,6 +2,15 @@
 $page = (isset($_GET['page']));
 ?>
 <script type="text/javascript">
+    // STATUS ACTIVE DUPLICATE
+    if (window?.location?.href?.indexOf('ActiveDuplicate') > -1) {
+        Swal.fire({
+            title: 'Info!',
+            icon: 'info',
+            text: 'Active Status Found, please disable the data!'
+        })
+        history.replaceState({}, '', './<?= $_GET['page'] ?>');
+    }
     // AVAILABLE
     if (window?.location?.href?.indexOf('Available') > -1) {
         Swal.fire({

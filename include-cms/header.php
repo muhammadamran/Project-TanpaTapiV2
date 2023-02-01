@@ -26,12 +26,12 @@ $userHeader = $_SESSION['username'];
                 $F     = $FL[0];
                 $L     = $FL[1];
                 $showU = substr($F, 0, 1) . "" . substr($L, 0, 1);
-                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / Kuehne + Nagel";
+                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / $app";
               } else {
                 $F     = $myString;
                 $L     = $myString;
                 $showU = substr($myString, 0, 1) . "" . substr($myString, 0, 1);
-                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / Kuehne + Nagel";
+                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / $app";
               }
               ?>
               <font style="text-transform: uppercase;"><?= $showU; ?></font>

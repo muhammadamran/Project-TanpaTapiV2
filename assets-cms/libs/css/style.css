@@ -1241,7 +1241,7 @@ Top Header
     font-size: 25px;
     text-transform: uppercase;
     font-weight: 200;
-    color:  #2E8B57;
+    color:  #f7b600;
 }
 .navbar-brand:hover{
     color: #007bff;
@@ -1731,7 +1731,7 @@ Left Navigation Sidebar
     /* padding: 6px 12px; */
     transition: 0.3s;
     border-radius: 0px;
-    background: transparent;
+    /* background: transparent; */
 }
 
 .nav-left-sidebar .navbar-nav .nav-link:focus,
