@@ -67,7 +67,7 @@ include 'include/connection.php';
                     <!-- END REFERENCES -->
                     <!-- USERS APPS -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="adm_user.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="#">
                             <i class="fas fa-users-cog" id="sidebar-font"></i>
                             <span>Users Apps</span>
                         </a>
@@ -75,7 +75,7 @@ include 'include/connection.php';
                     <!-- END USERS APPS -->
                     <!-- SETTINGS -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'app_setting.php' ? 'active' : '' ?>" href="app_setting.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'cms-settings.php' ? 'active' : '' ?>" href="cms-settings.php">
                             <i class="fas fa-cogs" id="sidebar-font"></i>
                             <span>Settings</span>
                         </a>
@@ -83,7 +83,7 @@ include 'include/connection.php';
                     <!-- END SETTINGS -->
                     <!-- LOG REPORT -->
                     <li class="nav-item ">
-                        <a class="nav-link <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="log_report.php">
+                        <a class="nav-link <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="#">
                             <i class="fa fa-fw fa-file" id="sidebar-font"></i>
                             <span>Log Report</span>
                         </a>

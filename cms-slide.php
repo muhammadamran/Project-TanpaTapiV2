@@ -51,6 +51,59 @@ if (isset($_POST["upload_"])) {
         echo "<script>window.location.href='cms-slide.php?ExtentionFialed=true&page=$page';</script>";
     }
 }
+
+// Active
+if (isset($_POST["enabled_"])) {
+    // Info Page
+    $page   = 'cms-slide.php';
+    // End Info Page
+
+    $ID     = $_POST['ID'];
+    $status = 'active';
+
+    $query = $db->query("UPDATE tb_slide SET status='$status' WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='cms-slide.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='cms-slide.php?UpdateFailed=true&page=$page';</script>";
+    }
+}
+
+// Disabled
+if (isset($_POST["disabled_"])) {
+    // Info Page
+    $page   = 'cms-slide.php';
+    // End Info Page
+
+    $ID     = $_POST['ID'];
+    $status = NULL;
+
+    $query = $db->query("UPDATE tb_slide SET status='$status' WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='cms-slide.php?UpdateSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='cms-slide.php?UpdateFailed=true&page=$page';</script>";
+    }
+}
+
+// Delete
+if (isset($_POST["delete_"])) {
+    // Info Page
+    $page  = 'cms-slide.php';
+    // End Info Page
+
+    $ID    = $_POST['ID'];
+
+    $query = $db->query("DELETE FROM tb_slide WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>window.location.href='cms-slide.php?DeleteSuccess=true&page=$page';</script>";
+    } else {
+        echo "<script>window.location.href='cms-slide.php?DeleteFailed=true&page=$page';</script>";
+    }
+}
 ?>
 <title>Slide Home - <?= $app ?> | Management System</title>
 <div class="dashboard-main-wrapper">
@@ -66,7 +119,7 @@ if (isset($_POST["upload_"])) {
                         <div class="page-header">
                             <div class="c-page">
                                 <div class="bg-page">
-                                    <i class="fas fa-pie-chart icon-page"></i>
+                                    <i class="fas fa-globe icon-page"></i>
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
@@ -186,6 +239,86 @@ if (isset($_POST["upload_"])) {
                                                         </td>
                                                     </tr>
 
+                                                    <!-- Enabled -->
+                                                    <div class="modal fade" id="Enabled<?= $row['id']; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">[Active Data] Slide Home</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <form action="" method="POST">
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="list-group">
+                                                                                <a href="#" class="behind-list-group-item list-group-item-action flex-column align-items-start active">
+                                                                                    <div class="d-flex w-100 justify-content-between">
+                                                                                        <h5 class="mb-1 text-white"><b>Actived! Data</b></h5>
+                                                                                        <small><?= date('d F Y') ?></small>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                                    <div class="d-flex w-100 justify-content-between">
+                                                                                        <h5 class="mb-1">Data details to be actived below:</h5>
+                                                                                    </div>
+                                                                                    <p class="mb-1" style="display: grid;">
+                                                                                        <font><b>ID</b>: <?= $row['id']; ?></font>
+                                                                                        <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
+                                                                                    </p>
+                                                                                </a>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
+                                                                        <button type="submit" name="enabled_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Enabled -->
+
+                                                    <!-- Disabled -->
+                                                    <div class="modal fade" id="Disabled<?= $row['id']; ?>">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title">[Disaled Data] Slide Home</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                </div>
+                                                                <form action="" method="POST">
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="list-group">
+                                                                                <a href="#" class="behind-list-group-item list-group-item-action flex-column align-items-start active">
+                                                                                    <div class="d-flex w-100 justify-content-between">
+                                                                                        <h5 class="mb-1 text-white"><b>Disabled! Data</b></h5>
+                                                                                        <small><?= date('d F Y') ?></small>
+                                                                                    </div>
+                                                                                </a>
+                                                                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                                    <div class="d-flex w-100 justify-content-between">
+                                                                                        <h5 class="mb-1">Data details to be disabled below:</h5>
+                                                                                    </div>
+                                                                                    <p class="mb-1" style="display: grid;">
+                                                                                        <font><b>ID</b>: <?= $row['id']; ?></font>
+                                                                                        <input type="hidden" name="ID" value="<?= $row['id']; ?>" />
+                                                                                    </p>
+                                                                                </a>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
+                                                                        <button type="submit" name="disabled_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End Disabled -->
+
                                                     <!-- Delete -->
                                                     <div class="modal fade" id="Delete<?= $row['id']; ?>">
                                                         <div class="modal-dialog">
@@ -219,7 +352,7 @@ if (isset($_POST["upload_"])) {
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</a>
-                                                                        <button type="submit" name="delete_user" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                        <button type="submit" name="delete_" class="btn btn-danger"><i class="fas fa-check-circle"></i> Yes</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
