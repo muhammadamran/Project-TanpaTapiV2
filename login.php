@@ -1,5 +1,5 @@
 <?php
-include "include-cms/connection.php";
+include "include/connection.php";
 if (isset($_POST['submit'])) {
 	$user = $_POST['username'];
 	$pass = md5(md5($_POST['password']));
@@ -12,98 +12,203 @@ if (isset($_POST['submit'])) {
 		$_SESSION['username'] = $user;
 		header("Location: ./index-cms.php?SignInsuccess=true");
 	} else {
-		header("Location: ./login.php?Failed");
+		header("Location: ./login.php?Danger");
 	}
 }
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
-	<title><?= $app ?> Management System</title>
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= $icon; ?>">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?= $icon; ?>">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?= $icon; ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="assets-cms/vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="assets-cms/vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="assets-cms/vendors/styles/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Login - <?= $Rapps['app_name'] ?> | General Management</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="assets-cms/apps/icon/logo.png">
+	<link rel="stylesheet" href="assets-cms/vendor/bootstrap/css/bootstrap.min.css">
+	<link href="assets-cms/vendor/fonts/circular-std/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="assets-cms/libs/css/style.css">
+	<link rel="stylesheet" href="assets-cms/vendor/fonts/fontawesome/css/fontawesome-all.css">
+	<!-- behind css -->
+	<link rel="stylesheet" href="assets-cms/libs/css/behind.css">
+	<!-- Loading -->
+	<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+	<style>
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+			padding-top: 40px;
+			padding-bottom: 40px;
+			font-family: Poppins, Open Sans, Helvetica, Arial, sans-serif;
+		}
+
+		/*loading*/
+		.preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background-color: #fff;
+		}
+
+		.preloader .loading {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font: 14px arial;
+		}
+
+		/* Alert */
+		/* Success */
+		.alert-success {
+			padding: 20px;
+			background-color: #003369;
+			color: white;
+		}
+
+		/* Info */
+		.alert-info {
+			padding: 20px;
+			background-color: #0099da;
+			color: white;
+		}
+
+		/* Warning */
+		.alert-warning {
+			padding: 20px;
+			background-color: #ff9800;
+			color: white;
+		}
+
+		/* Danger */
+		.alert-danger {
+			padding: 20px;
+			background-color: #f44336;
+			color: white;
+		}
+
+		/* End Danger */
+		.closebtn {
+			margin-left: 15px;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size: 22px;
+			line-height: 20px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		.closebtn:hover {
+			color: black;
+		}
+
+		/* End Alert */
+	</style>
 </head>
 
-<body class="login-page" style="background-color: #F7B600;">
-	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-12">
-					<div class="login-box bg-white box-shadow border-radius-10">
-						<div class="login-title">
-							<h2 class="text-center text-dark">Sign In To<br>Management System</h2>
-						</div>
-						<!-- Failed -->
-						<?php if (isset($_GET['Failed'])) { ?>
-							<hr>
-							<div class="alert alert-danger alert-dismissible fade show" role="alert">
-								<strong>Failed!</strong> Please check your username or password.
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<hr>
-							<!-- End Failed -->
-						<?php } ?>
-						<form action="" method="POST">
-							<div class="input-group custom">
-								<input type="text" class="form-control form-control-lg" name="username" placeholder="Username">
-								<div class="input-group-append custom">
-									<span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
-								</div>
-							</div>
-							<div class="input-group custom">
-								<input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="**********">
-								<div class="input-group-append custom">
-									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-6">
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="customCheck1" onclick="myFunction()">
-										<label class="custom-control-label" for="customCheck1">Show password</label>
-									</div>
-								</div>
-							</div>
-							<div class="row pb-30">
-								<div class="col-6">
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="customCheck2">
-										<label class="custom-control-label" for="customCheck2">Remember</label>
-									</div>
-								</div>
-								<div class="col-6">
-									<!-- <div class="forgot-password"><a href="forgot-password.html">Forgot Password</a></div> -->
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<div class="input-group mb-0">
-										<button class="btn btn-dark btn-lg btn-block" name="submit">Sign In</button>
-									</div>
-								</div>
-							</div>
-						</form>
+<body style="background:url('https://www.pngmart.com/files/13/Vector-Pattern-PNG-Image-Background.png') no-repeat fixed center center;background-size: 100%">
+	<div class="preloader">
+		<div class="loading">
+			<img src="<?= $loader ?>" width="150">
+			<br>
+			<div class="loading-divider"></div>
+			<font class="text-loading-wait">Please wait ...</font>
+		</div>
+	</div>
+	<div class="splash-container">
+		<div class="card ">
+			<div class="card-header text-center"><a href="index.php"><img class="logo-img" src="<?= $icon; ?>" alt="logo" width="100px"></a>
+				<hr>
+				<span class="splash-description" style="padding-bottom: 0px;">Please enter your user information.</span>
+			</div>
+			<!-- alert -->
+			<div style="padding: 10px;">
+				<?php if (isset($_GET['Success'])) { ?>
+					<!-- Success -->
+					<div class="alert-success">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong>Success!</strong> Indicates a dangerous or potentially negative action.
 					</div>
-				</div>
+					<!-- End Success -->
+				<?php } ?>
+				<?php if (isset($_GET['Info'])) { ?>
+					<!-- Info -->
+					<div class="alert-info">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong>Info!</strong> Indicates a dangerous or potentially negative action.
+					</div>
+					<!-- End Info -->
+				<?php } ?>
+				<?php if (isset($_GET['Warning'])) { ?>
+					<!-- Warning -->
+					<div class="alert-warning">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong>Information!</strong> Please Sign In with username and password.
+					</div>
+					<!-- End Warning -->
+				<?php } ?>
+				<?php if (isset($_GET['Danger'])) { ?>
+					<!-- Danger -->
+					<div class="alert-danger">
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						<strong>Failed!</strong> Your account username or password is incorrect, please try again.
+					</div>
+					<!-- End Danger -->
+				<?php } ?>
+			</div>
+			<!-- end alert -->
+			<div class="card-body">
+				<form action=" " method="post">
+					<div class="form-group">
+						<input class="form-control form-control-lg" name="username" type="text" autofocus placeholder="Username" autocomplete="off">
+					</div>
+					<div class="form-group">
+						<input class="form-control form-control-lg" name="password" type="password" id="password" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<div class="checkbox checkbox-css">
+							<input type="checkbox" id="ckb1" onclick="myFunction()" />
+							<label for="ckb1">Show password</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="checkbox checkbox-css">
+							<input type="checkbox" id="ckb2" checked />
+							<label for="ckb2">Remember me</label>
+						</div>
+					</div>
+					<button type="submit" name="submit" value="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+				</form>
+			</div>
+			<div class="card-footer bg-white p-0  ">
+				<p align="center">
+					<br>
+					<small> <?= $app; ?>
+						<br>
+						<?= $company; ?>
+					</small>
+				</p>
+				<br>
 			</div>
 		</div>
 	</div>
-	<!-- js -->
-	<script src="assets-cms/vendors/scripts/core.js"></script>
-	<script src="assets-cms/vendors/scripts/script.min.js"></script>
-	<script src="assets-cms/vendors/scripts/process.js"></script>
-	<script src="assets-cms/vendors/scripts/layout-settings.js"></script>
+	<script src="assets-cms/vendor/jquery/jquery-3.3.1.min.js"></script>
+	<script src="assets-cms/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".preloader").fadeOut();
+		})
+	</script>
 	<!-- Show Password -->
 	<script type="text/javascript">
 		function myFunction() {

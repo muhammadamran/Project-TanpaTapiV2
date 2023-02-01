@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="81" viewBox="0 0 90 81">
+  <defs>
+    <clipPath id="clip-loader">
+      <rect width="90" height="81"/>
+    </clipPath>
+  </defs>
+  <g id="loader" clip-path="url(#clip-loader)">
+    <rect width="90" height="81" fill="#fff"/>
+    <g id="loader-2" data-name="loader" transform="translate(17 30)">
+      <g id="Group_1" data-name="Group 1" transform="translate(1 1)">
+        <path id="Oval-2" d="M36,18A18,18,0,0,0,18,0" fill="none" stroke="#707070" stroke-width="2" fill-rule="evenodd"/>
+        <circle id="Ellipse_1" data-name="Ellipse 1" cx="1" cy="1" r="1" transform="translate(35 17)" fill="#F7B600"/>
+      </g>
+    </g>
+  </g>
+</svg>

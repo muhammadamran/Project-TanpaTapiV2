@@ -106,3 +106,9 @@ if ($Rapps['youtube'] == NULL) {
     $youtube_url     = $Rapps['youtube'];
     $youtube_display = 'style="display:show"';
 }
+// url
+if ($Rapps['url'] == NULL) {
+    $url     = '#';
+} else {
+    $url     = $Rapps['url'];
+}

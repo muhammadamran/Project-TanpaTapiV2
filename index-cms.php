@@ -1,97 +1,163 @@
-<?php include "include-cms/connection.php"; ?>
-<?php include "include-cms/restrict.php"; ?>
-<?php include "include-cms/head.php"; ?>
-<?php include "include-cms/header.php"; ?>
-<?php include "include-cms/sidebar.php"; ?>
-<div class="main-container">
-    <div class="pd-ltr-20">
-        <div class="card-box pd-20 height-100-p mb-30" style="background: linear-gradient(45deg, #ffc10775, #f7b60078);">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <center>
-                        <img src="<?= $icon; ?>" alt="Logo">
-                    </center>
-                </div>
-                <div class="col-md-8">
-                    <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                        Welcome back <div class="weight-600 font-30 text-blue"><?= $_SESSION['username']; ?>!</div>
-                    </h4>
-                    <p class="font-18 max-width-600"><?= $app ?> | <?= $company ?>.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart"></div>
-                        </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">2020</div>
-                            <div class="weight-600 font-14">Contact</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart2"></div>
-                        </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">400</div>
-                            <div class="weight-600 font-14">Deals</div>
+<?php
+include "include/connection.php";
+include "include-cms/restrict.php";
+include "include-cms/head.php";
+include "include-cms/alert.php";
+include "include-cms/dataTablesCSS.php";
+?>
+<title>Dashboard - <?= $app ?> | General Management</title>
+<div class="dashboard-main-wrapper">
+    <?php include "include-cms/header.php"; ?>
+    <?php include "include-cms/sidebar.php"; ?>
+    <div class="dashboard-wrapper">
+        <!-- Content -->
+        <div class="dashboard-ecommerce">
+            <div class="container-fluid dashboard-content ">
+                <!-- Page Title -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-header">
+                            <div class="c-page">
+                                <div class="bg-page">
+                                    <i class="fas fa-pie-chart icon-page"></i>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <div>
+                                        <h2 class="pageheader-title" style="color: #003369;">Dashboard </h2>
+                                    </div>
+                                    <div style="margin-top: -10px;">
+                                        <font>DASHBOARD</font>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                            <div class="page-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart3"></div>
-                        </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">350</div>
-                            <div class="weight-600 font-14">Campaign</div>
+                <!-- End Page Title -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> All Devices Dashboard</h5>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Laptop -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Laptop"></div>
+                                    </div>
+                                    <!-- Server -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Server"></div>
+                                    </div>
+                                    <!-- PC -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_PC"></div>
+                                    </div>
+                                    <!-- Monitor/LCD -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_ML"></div>
+                                    </div>
+                                    <!-- TV -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_TV"></div>
+                                    </div>
+                                    <!-- Phone -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Phone"></div>
+                                    </div>
+                                    <!-- Ipad -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Ipad"></div>
+                                    </div>
+                                    <!-- Headphones -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Headphones"></div>
+                                    </div>
+                                    <!-- Switch -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_Switch"></div>
+                                    </div>
+                                    <!-- RF -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_RF"></div>
+                                    </div>
+                                    <!-- ETC -->
+                                    <div class="col-sm-3">
+                                        <div id="Dash_ETC"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 mb-30">
-                <div class="card-box height-100-p widget-style1">
-                    <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart4"></div>
+
+                <!-- First Row -->
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 1</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="dashboard_1"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widget-data">
-                            <div class="h4 mb-0">$6060</div>
-                            <div class="weight-600 font-14">Worth</div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 2</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="dashboard_2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 3</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="dashboard_3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-list"></i> Data Dashboard 4</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <div id="dashboard_4"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- End First Row -->
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-8 mb-30">
-                <div class="card-box height-100-p pd-20">
-                    <h2 class="h4 mb-20">Activity</h2>
-                    <div id="chart5"></div>
-                </div>
-            </div>
-            <div class="col-xl-4 mb-30">
-                <div class="card-box height-100-p pd-20">
-                    <h2 class="h4 mb-20">Lead Target</h2>
-                    <div id="chart6"></div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-wrap pd-20 mb-20 card-box">
-            <?= $app ?> - By <a href="https://hellos-id.com" target="_blank">Hellos<sup>ID</sup></a>
-        </div>
+        <!-- End Content -->
+        <?php include "include-cms/copyright.php"; ?>
     </div>
 </div>
 <?php include "include-cms/footer.php"; ?>
-<script src="assets-cms/vendors/scripts/dashboard.js"></script>
+<?php include "include-cms/dataTablesJS.php"; ?>
+<script type="text/javascript">
+    // SIGN IN SUCCESS
+    if (window?.location?.href?.indexOf('SignInsuccess') > -1) {
+        Swal.fire({
+            title: 'Sign In Success!',
+            icon: 'success',
+            text: '<?= $app ?>!'
+        })
+        history.replaceState({}, '', './index-cms.php');
+    }
+</script>

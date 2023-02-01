@@ -1,67 +1,55 @@
-<div class="header">
-    <div class="header-left">
-        <div class="menu-icon dw dw-menu"></div>
-        <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
-        <div class="header-search">
-            <form>
-                <div class="form-group mb-0">
-                    <i class="dw dw-search2 search-icon"></i>
-                    <input type="text" class="form-control search-input" placeholder="Search Here">
-                    <div class="dropdown">
-                        <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-                            <i class="ion-arrow-down-c"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">From</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">To</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
-                                <div class="col-sm-12 col-md-10">
-                                    <input class="form-control form-control-sm form-control-line" type="text">
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <button class="btn btn-primary">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="header-right">
-        <div class="dashboard-setting user-notification">
-            <div class="dropdown">
-                <a class="dropdown-toggle no-arrow" href="javascript:;" data-toggle="right-sidebar">
-                    <i class="dw dw-settings2"></i>
-                </a>
+<?php
+$userHeader = $_SESSION['username'];
+?>
+<div class="dashboard-header">
+  <nav class="navbar navbar-expand-lg bg-white fixed-top">
+    <a class="navbar-brand" href="index.php">
+      <img src="<?= $icon ?>" alt="logo" style="width: 50px;">
+      <font style="font-size: 14px;text-transform: initial;font-weight: 300;">Management System</font>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto navbar-right-top">
+        <li class="nav-item dropdown nav-user">
+          <button class="label-behind label-sm label-primary" style="margin-top: 19px;margin-left:5px" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Manual Book"><i class="fas fa-book"></i> </button>
+          <button class="label-behind label-sm label-primary" style="margin-top: 19px;margin-right:5px" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Help"><i class="fas fa-question-circle"></i> </button>
+        </li>
+        <li class="nav-item dropdown nav-user">
+          <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="header-profiles">
+              <?php
+              $myString = $userHeader;
+              if (strstr($myString, '.')) {
+                $FL    = explode('.', $myString);
+                $F     = $FL[0];
+                $L     = $FL[1];
+                $showU = substr($F, 0, 1) . "" . substr($L, 0, 1);
+                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / Kuehne + Nagel";
+              } else {
+                $F     = $myString;
+                $L     = $myString;
+                $showU = substr($myString, 0, 1) . "" . substr($myString, 0, 1);
+                $showD = "<font style='text-transform: capitalize;'>$L</font>, <font style='text-transform: capitalize;'>$F</font> / Kuehne + Nagel";
+              }
+              ?>
+              <font style="text-transform: uppercase;"><?= $showU; ?></font>
             </div>
-        </div>
-        <div class="user-info-dropdown">
-            <div class="dropdown">
-                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                    <span class="user-icon">
-                        <img src="https://img.freepik.com/premium-vector/human-symbol-3d-icon-user-business-symbology-website-profile_593228-130.jpg?w=2000" alt="">
-                    </span>
-                    <span class="user-name"><?= $_SESSION['username']; ?></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                    <a class="dropdown-item" href="logout.php"><i class="dw dw-logout"></i> Sign Out</a>
-                </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+            <div class="nav-user-info">
+              <h5 class="mb-0 text-white nav-user-name">
+                <?= $showD; ?>
+              </h5>
+              <span class="status"></span><span class="ml-2">Available</span>
             </div>
-        </div>
+            <a class="dropdown-item" href="user_account.php"><i class="fas fa-user mr-2"></i>Account</a>
+            <a class="dropdown-item" href="user_setting.php"><i class="fas fa-cog mr-2"></i>Setting</a>
+            <a class="dropdown-item" href="logout.php"><i class="fas fa-power-off mr-2"></i>Logout</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </nav>
 </div>
