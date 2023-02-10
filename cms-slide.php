@@ -196,7 +196,7 @@ if (isset($_POST["delete_"])) {
                                                         <td><?= $no ?>.</td>
                                                         <td>
                                                             <div style="display: flex;justify-content: center;align-items: center;">
-                                                                <img src="assets/img/<?= $row['images_slide'] ?>" class="img-row-oke" alt="">
+                                                                <img src="assets/img/slide/<?= $row['images_slide'] ?>" class="img-row-oke" alt="">
                                                             </div>
                                                         </td>
                                                         <td style="text-align: center;">

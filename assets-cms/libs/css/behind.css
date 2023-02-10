@@ -317,3 +317,10 @@ tbody {
 li.nav-item {
     margin: 1.5px;
 }
+
+.img-row-oke {
+    width: 150px;
+    height: 150px;
+    background: #2ccada;
+    border-radius: 100%;
+}
