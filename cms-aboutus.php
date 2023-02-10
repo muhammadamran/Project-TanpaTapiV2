@@ -228,7 +228,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Active Data] Slide Home</h4>
+                                                                    <h4 class="modal-title">[Active Data] About Us</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">
@@ -268,7 +268,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Disaled Data] Slide Home</h4>
+                                                                    <h4 class="modal-title">[Disaled Data] About Us</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">
@@ -308,7 +308,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Delete Data] Slide Home</h4>
+                                                                    <h4 class="modal-title">[Delete Data] About Us</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">

@@ -35,11 +35,11 @@ include 'include/connection.php';
                     <!-- END Dashboard -->
                     <!-- REFERENCES -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
+                        <a class="nav-link <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php' || $uriSegments[2] == 'cms-content.php'  ? 'active' : '' ?>" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-setup" aria-controls="submenu-14">
                             <i class="fas fa-globe" id="sidebar-font"></i>
                             <span>Website</span>
                         </a>
-                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php'  ? 'show' : '' ?>">
+                        <div id="submenu-setup" class="collapse submenu <?= $uriSegments[2] == 'cms-slide.php' || $uriSegments[2] == 'cms-aboutus.php' || $uriSegments[2] == 'cms-ourmenu.php' || $uriSegments[2] == 'cms-contactus.php' || $uriSegments[2] == 'cms-content.php'  ? 'show' : '' ?>">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link <?= $uriSegments[2] == 'cms-slide.php' ? 'active' : '' ?>" href="cms-slide.php">
@@ -61,17 +61,22 @@ include 'include/connection.php';
                                         <span>Contact Us</span>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= $uriSegments[2] == 'cms-content.php' ? 'active' : '' ?>" href="cms-content.php">
+                                        <span>3 Content</span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>
                     <!-- END REFERENCES -->
                     <!-- USERS APPS -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link <?= $uriSegments[2] == 'adm_user.php' ? 'active' : '' ?>" href="#">
                             <i class="fas fa-users-cog" id="sidebar-font"></i>
                             <span>Users Apps</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- END USERS APPS -->
                     <!-- SETTINGS -->
                     <li class="nav-item">
@@ -82,12 +87,12 @@ include 'include/connection.php';
                     </li>
                     <!-- END SETTINGS -->
                     <!-- LOG REPORT -->
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <a class="nav-link <?= $uriSegments[2] == 'log_report.php' ? 'active' : '' ?>" href="#">
                             <i class="fa fa-fw fa-file" id="sidebar-font"></i>
                             <span>Log Report</span>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- END LOG REPORT -->
                     <!-- END NAV ADMINISTRATION -->
                     <li class="nav-divider">

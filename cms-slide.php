@@ -26,7 +26,7 @@ if (isset($_POST["upload_"])) {
     $exp            = explode('.', $filename);
     $ext            = end($exp);
 
-    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
+    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'PNG' || $ext == 'GIF' || $ext == 'SVG') {
         move_uploaded_file($tmp_file_name, $dir . $UploadFile);
 
         $check_data = $db->query("SELECT COUNT(*) AS t_check FROM tb_slide WHERE status='active'");

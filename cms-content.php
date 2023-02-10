@@ -1,4 +1,3 @@
-<link type="text/css" href="assets/ckeditor5/sample/css/sample.css" rel="stylesheet" media="screen" />
 <?php
 include "include/connection.php";
 include "include-cms/restrict.php";
@@ -10,7 +9,7 @@ include "include-cms/dataTablesCSS.php";
 // Icon
 if (isset($_POST["upload_"])) {
     // Info Page
-    $page      = 'cms-ourmenu.php';
+    $page      = 'cms-content.php';
     // End Info Page
 
     $Title          = $_POST['Title'];
@@ -32,75 +31,75 @@ if (isset($_POST["upload_"])) {
     if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'PNG' || $ext == 'GIF' || $ext == 'SVG') {
         move_uploaded_file($tmp_file_name, $dir . $UploadFile);
 
-        $query    = $db->query("INSERT INTO tb_ourmenu 
+        $query    = $db->query("INSERT INTO tb_content 
                                     (id,images_menu,title_menu,desc_menu,status,created_by,created_date)
                                     VALUES
                                     ('','" . $UploadFile . "','" . $Title . "','" . $Description . "','" . $status . "','" . $created_by . "','" . $created_date . "')");
 
         if ($query) {
-            echo "<script>window.location.href='cms-ourmenu.php?InsertSuccess=true&page=$page';</script>";
+            echo "<script>window.location.href='cms-content.php?InsertSuccess=true&page=$page';</script>";
         } else {
-            echo "<script>window.location.href='cms-ourmenu.php?InsertFailed=true&page=$page';</script>";
+            echo "<script>window.location.href='cms-content.php?InsertFailed=true&page=$page';</script>";
         }
     } else {
-        echo "<script>window.location.href='cms-ourmenu.php?ExtentionFialed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?ExtentionFialed=true&page=$page';</script>";
     }
 }
 
 // Active
 if (isset($_POST["enabled_"])) {
     // Info Page
-    $page   = 'cms-ourmenu.php';
+    $page   = 'cms-content.php';
     // End Info Page
 
     $ID     = $_POST['ID'];
     $status = 'active';
 
-    $query = $db->query("UPDATE tb_ourmenu SET status='$status' WHERE id='$ID'");
+    $query = $db->query("UPDATE tb_content SET status='$status' WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-ourmenu.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-ourmenu.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
 // Disabled
 if (isset($_POST["disabled_"])) {
     // Info Page
-    $page   = 'cms-ourmenu.php';
+    $page   = 'cms-content.php';
     // End Info Page
 
     $ID     = $_POST['ID'];
     $status = NULL;
 
-    $query = $db->query("UPDATE tb_ourmenu SET status='$status' WHERE id='$ID'");
+    $query = $db->query("UPDATE tb_content SET status='$status' WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-ourmenu.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-ourmenu.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
 // Delete
 if (isset($_POST["delete_"])) {
     // Info Page
-    $page  = 'cms-ourmenu.php';
+    $page  = 'cms-content.php';
     // End Info Page
 
     $ID    = $_POST['ID'];
 
-    $query = $db->query("DELETE FROM tb_ourmenu WHERE id='$ID'");
+    $query = $db->query("DELETE FROM tb_content WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-ourmenu.php?DeleteSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?DeleteSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-ourmenu.php?DeleteFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-content.php?DeleteFailed=true&page=$page';</script>";
     }
 }
 ?>
-<title>Our Menu - <?= $app ?> | Management System</title>
+<title>3 Content - <?= $app ?> | Management System</title>
 <div class="dashboard-main-wrapper">
     <?php include "include-cms/header.php"; ?>
     <?php include "include-cms/sidebar.php"; ?>
@@ -118,7 +117,7 @@ if (isset($_POST["delete_"])) {
                                 </div>
                                 <div style="margin-left: 10px;">
                                     <div>
-                                        <h2 class="pageheader-title" style="color: #f7b600;">Our Menu </h2>
+                                        <h2 class="pageheader-title" style="color: #f7b600;">3 Content </h2>
                                     </div>
                                     <div style="margin-top: -10px;">
                                         <font>WEBSITE</font>
@@ -138,26 +137,57 @@ if (isset($_POST["delete_"])) {
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <form action="" method="POST" enctype="multipart/form-data" id="myForm">
-                                            <div class="form-group" id="text">
-                                                <label for="file">Upload Menu</label>
-                                                <input name="file" type="file" id="file" class="form-control" /><br />
-                                            </div>
-                                            <!-- <div class="form-group"> -->
-                                            <!-- <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" /> -->
-                                            <!-- </div> -->
-                                            <div class="form-group">
-                                                <label for="Title">Title</label>
-                                                <input type="text" class="form-control" name="Title" id="Title" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Description">Description</label>
-                                                <textarea type="text" class="form-control" name="editor" id="editor"></textarea>
-                                            </div>
-                                            <div class="card-header"></div>
-                                            <div class="form-group row" style="margin-bottom: -15px;">
-                                                <div class="col-sm-12 col-md-10">
-                                                    <button class="btn btn-primary" name="upload_"><i class="fa-solid fa-floppy-disk"></i> Save</button>
-                                                    <button class="btn btn-info" onclick="myFunction()"><i class="fa-solid fa-circle-xmark"></i> Reset</button>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group" id="ContentOneText">
+                                                        <label for="contentOne">Content 1</label>
+                                                        <input name="contentOne" type="file" id="contentOne" class="form-control" /><br />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TitleOne">Title 1</label>
+                                                        <input type="text" class="form-control" name="TitleOne" id="TitleOne" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="DescriptionOne">Description 1</label>
+                                                        <textarea type="text" class="form-control" name="DescriptionOne" id="DescriptionOne"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group" id="ContentTwoText">
+                                                        <label for="contentTwo">Content 2</label>
+                                                        <input name="contentTwo" type="file" id="contentTwo" class="form-control" /><br />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TitleTwo">Title 2</label>
+                                                        <input type="text" class="form-control" name="TitleTwo" id="TitleTwo" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="DescriptionTwo">Description 2</label>
+                                                        <textarea type="text" class="form-control" name="DescriptionTwo" id="DescriptionTwo"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group" id="ContentThreeText">
+                                                        <label for="contentThree">Content 3</label>
+                                                        <input name="contentThree" type="file" id="contentThree" class="form-control" /><br />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="TitleThree">Title 3</label>
+                                                        <input type="text" class="form-control" name="TitleThree" id="TitleThree" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="DescriptionThree">Description 3</label>
+                                                        <textarea type="text" class="form-control" name="DescriptionThree" id="DescriptionThree"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="card-header"></div>
+                                                    <div class="form-group row" style="margin-bottom: -15px;">
+                                                        <div class="col-sm-12 col-md-10">
+                                                            <button class="btn btn-primary" name="upload_"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                                                            <button class="btn btn-info" onclick="myFunction()"><i class="fa-solid fa-circle-xmark"></i> Reset</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>
@@ -191,7 +221,7 @@ if (isset($_POST["delete_"])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $dataTable = $db->query("SELECT * FROM tb_ourmenu ORDER BY id ASC", 0);
+                                            $dataTable = $db->query("SELECT * FROM tb_content ORDER BY id ASC", 0);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $no = 0;
                                                 while ($row = mysqli_fetch_array($dataTable)) {
@@ -251,7 +281,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Active Data] Our Menu</h4>
+                                                                    <h4 class="modal-title">[Active Data] 3 Content</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">
@@ -291,7 +321,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Disaled Data] Our Menu</h4>
+                                                                    <h4 class="modal-title">[Disaled Data] 3 Content</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">
@@ -331,7 +361,7 @@ if (isset($_POST["delete_"])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title">[Delete Data] Our Menu</h4>
+                                                                    <h4 class="modal-title">[Delete Data] 3 Content</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                 </div>
                                                                 <form action="" method="POST">
@@ -385,7 +415,6 @@ if (isset($_POST["delete_"])) {
 </div>
 <?php include "include-cms/footer.php"; ?>
 <?php include "include-cms/dataTablesJS.php"; ?>
-<script src="assets/ckeditor5/ckeditor.js"></script>
 <script type="text/javascript">
     function myFunction() {
         document.getElementById("myForm").reset();
@@ -445,15 +474,4 @@ if (isset($_POST["delete_"])) {
             }
         });
     });
-
-    ClassicEditor
-        .create(document.querySelector('#editor'), {
-            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-        })
-        .then(editor => {
-            window.editor = editor;
-        })
-        .catch(err => {
-            console.error(err.stack);
-        });
 </script>
