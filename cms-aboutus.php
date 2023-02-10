@@ -1,3 +1,4 @@
+<link type="text/css" href="assets/ckeditor5/sample/css/sample.css" rel="stylesheet" media="screen" />
 <?php
 include "include/connection.php";
 include "include-cms/restrict.php";
@@ -7,101 +8,87 @@ include "include-cms/dataTablesCSS.php";
 ?>
 <?php
 // Icon
-if (isset($_POST["upload_"])) {
+if (isset($_POST["created_"])) {
     // Info Page
-    $page      = 'cms-slide.php';
+    $page      = 'cms-aboutus.php';
     // End Info Page
 
+    $Title          = $_POST['Title'];
+    $Description    = $_POST['editor'];
     $status         = 'active';
     $created_by     = $_SESSION['username'];
     $created_date   = date('Y-m-d H:m:a');
-    $UploadFile     = 'Slide_' . time() . "_" . $_FILES['file']['name'];
 
-    $dir            = "assets/img/slide/";
-    $timeUpload     = date('Y-m-d-h-m-i');
-    $file_name      = $timeUpload . "_" . $_FILES["file"]["name"];
-    $size           = $_FILES["file"]["size"];
-    $tmp_file_name  = $_FILES["file"]["tmp_name"];
-    $filename       = $_FILES['file']['name'];
-    $exp            = explode('.', $filename);
-    $ext            = end($exp);
+    $check_data = $db->query("SELECT COUNT(*) AS t_check FROM tb_about WHERE status='active'");
+    $check      = mysqli_fetch_array($check_data);
 
-    if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'png' || $ext == 'gif' || $ext == 'svg') {
-        move_uploaded_file($tmp_file_name, $dir . $UploadFile);
+    if ($check['t_check'] == 0 || $check['t_check'] == '0' || $check['t_check'] == NULL) {
 
-        $check_data = $db->query("SELECT COUNT(*) AS t_check FROM tb_slide WHERE status='active'");
-        $check      = mysqli_fetch_array($check_data);
+        $query    = $db->query("INSERT INTO tb_about 
+                                (id,title_about,description_about,status,created_by,cretated_date)
+                                VALUES
+                                ('','" . $Title . "','" . $Description . "','" . $status . "','" . $created_by . "','" . $created_date . "')");
+        if ($query) {
 
-        if ($check['t_check'] == 0 || $check['t_check'] == '0' || $check['t_check'] == NULL) {
-
-            $query    = $db->query("INSERT INTO tb_slide 
-                                    (id,images_slide,status,created_by,cretated_date)
-                                    VALUES
-                                    ('','" . $UploadFile . "','" . $status . "','" . $created_by . "','" . $created_date . "')");
-
-            if ($query) {
-                echo "<script>window.location.href='cms-slide.php?InsertSuccess=true&page=$page';</script>";
-            } else {
-                echo "<script>window.location.href='cms-slide.php?InsertFailed=true&page=$page';</script>";
-            }
+            echo "<script>window.location.href='cms-aboutus.php?InsertSuccess=true&page=$page';</script>";
         } else {
-            echo "<script>window.location.href='cms-slide.php?ActiveDuplicate=true&page=$page';</script>";
+            echo "<script>window.location.href='cms-aboutus.php?InsertFailed=true&page=$page';</script>";
         }
     } else {
-        echo "<script>window.location.href='cms-slide.php?ExtentionFialed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?ActiveDuplicate=true&page=$page';</script>";
     }
 }
 
 // Active
 if (isset($_POST["enabled_"])) {
     // Info Page
-    $page   = 'cms-slide.php';
+    $page   = 'cms-aboutus.php';
     // End Info Page
 
     $ID     = $_POST['ID'];
     $status = 'active';
 
-    $query = $db->query("UPDATE tb_slide SET status='$status' WHERE id='$ID'");
+    $query = $db->query("UPDATE tb_about SET status='$status' WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-slide.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-slide.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
 // Disabled
 if (isset($_POST["disabled_"])) {
     // Info Page
-    $page   = 'cms-slide.php';
+    $page   = 'cms-aboutus.php';
     // End Info Page
 
     $ID     = $_POST['ID'];
     $status = NULL;
 
-    $query = $db->query("UPDATE tb_slide SET status='$status' WHERE id='$ID'");
+    $query = $db->query("UPDATE tb_about SET status='$status' WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-slide.php?UpdateSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?UpdateSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-slide.php?UpdateFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?UpdateFailed=true&page=$page';</script>";
     }
 }
 
 // Delete
 if (isset($_POST["delete_"])) {
     // Info Page
-    $page  = 'cms-slide.php';
+    $page  = 'cms-aboutus.php';
     // End Info Page
 
     $ID    = $_POST['ID'];
 
-    $query = $db->query("DELETE FROM tb_slide WHERE id='$ID'");
+    $query = $db->query("DELETE FROM tb_about WHERE id='$ID'");
 
     if ($query) {
-        echo "<script>window.location.href='cms-slide.php?DeleteSuccess=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?DeleteSuccess=true&page=$page';</script>";
     } else {
-        echo "<script>window.location.href='cms-slide.php?DeleteFailed=true&page=$page';</script>";
+        echo "<script>window.location.href='cms-aboutus.php?DeleteFailed=true&page=$page';</script>";
     }
 }
 ?>
@@ -143,17 +130,18 @@ if (isset($_POST["delete_"])) {
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <form action="" method="POST" enctype="multipart/form-data" id="myForm">
-                                            <div class="form-group" id="text">
-                                                <label for="file">Upload Picture</label>
-                                                <input name="file" type="file" id="file" class="form-control" /><br />
+                                            <div class="form-group">
+                                                <label for="Title">Title</label>
+                                                <input type="text" class="form-control" name="Title" id="Title" />
                                             </div>
-                                            <!-- <div class="form-group"> -->
-                                            <!-- <input type="button" id="add_more" class="upload btn btn-sm btn-primary" value="More Files" /> -->
-                                            <!-- </div> -->
+                                            <div class="form-group">
+                                                <label for="Description">Description</label>
+                                                <textarea type="text" class="form-control" name="editor" id="editor"></textarea>
+                                            </div>
                                             <div class="card-header"></div>
                                             <div class="form-group row" style="margin-bottom: -15px;">
                                                 <div class="col-sm-12 col-md-10">
-                                                    <button class="btn btn-primary" name="upload_"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+                                                    <button class="btn btn-primary" name="created_"><i class="fa-solid fa-floppy-disk"></i> Save</button>
                                                     <button class="btn btn-info" onclick="myFunction()"><i class="fa-solid fa-circle-xmark"></i> Reset</button>
                                                 </div>
                                             </div>
@@ -172,13 +160,12 @@ if (isset($_POST["delete_"])) {
                             <h5 class="card-header"><i class="fas fa-list"></i> Data</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <!-- <table id="dataTables" class="table table-striped table-bordered first"> -->
                                     <table id="dataTablesN" class="table table-striped table-bordered first">
-                                        <!-- <table id="dataTables" class="data-table table hover multiple-select-row nowrap"> -->
                                         <thead>
                                             <tr style="text-align: center;">
                                                 <th class="table-plus no-sort">No</th>
-                                                <th class="table-plus no-sort">#</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
                                                 <th>Status</th>
                                                 <th>Created</th>
                                                 <th>Action</th>
@@ -186,7 +173,7 @@ if (isset($_POST["delete_"])) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $dataTable = $db->query("SELECT * FROM tb_slide ORDER BY id ASC", 0);
+                                            $dataTable = $db->query("SELECT * FROM tb_about ORDER BY id ASC", 0);
                                             if (mysqli_num_rows($dataTable) > 0) {
                                                 $no = 0;
                                                 while ($row = mysqli_fetch_array($dataTable)) {
@@ -194,11 +181,8 @@ if (isset($_POST["delete_"])) {
                                             ?>
                                                     <tr>
                                                         <td><?= $no ?>.</td>
-                                                        <td>
-                                                            <div style="display: flex;justify-content: center;align-items: center;">
-                                                                <img src="assets/img/<?= $row['images_slide'] ?>" class="img-row-oke" alt="">
-                                                            </div>
-                                                        </td>
+                                                        <td><?= $row['title_about'] ?></td>
+                                                        <td><?= $row['description_about'] ?></td>
                                                         <td style="text-align: center;">
                                                             <?php if ($row['status'] == 'active') { ?>
                                                                 <span class="badge-dot badge-success mr-1"></span> Active
@@ -378,63 +362,20 @@ if (isset($_POST["delete_"])) {
 </div>
 <?php include "include-cms/footer.php"; ?>
 <?php include "include-cms/dataTablesJS.php"; ?>
+<script src="assets/ckeditor5/ckeditor.js"></script>
 <script type="text/javascript">
     function myFunction() {
         document.getElementById("myForm").reset();
     }
 
-    var abc = 0;
-    $(document).ready(function() {
-        $('#add_more').click(function() {
-            $(this).before($("<div/>", {
-                id: 'filediv'
-            }).fadeIn('slow').append($("<input/>", {
-                name: 'file[]',
-                type: 'file',
-                id: 'file',
-                class: 'form-control'
-            }), $("<br/>")));
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(err => {
+            console.error(err.stack);
         });
-        $('#add_more1').click(function() {
-            $(this).before($("<div/>", {
-                id: 'filediv'
-            }).fadeIn('slow').append($("<input/>", {
-                name: 'file[]',
-                type: 'file',
-                id: 'file',
-                class: 'form-control'
-            }), $("<br/>")));
-        });
-        $('body').on('change', '#file', function() {
-            if (this.files && this.files[0]) {
-                abc += 1;
-                var z = abc - 1;
-                var x = $(this).parent().find('#previewimg' + z).remove();
-                $(this).before("<div id='abcd" + abc + "' class='abcd'><img id='previewimg" + abc + "' src='' style='width:140px'/></div>");
-                var reader = new FileReader();
-                reader.onload = imageIsLoaded;
-                reader.readAsDataURL(this.files[0]);
-                $(this).hide();
-                $("#abcd" + abc).append($("<img/>", {
-                    id: 'img',
-                    src: 'assets-cms/icon/remove.png',
-                    alt: 'delete',
-                    style: 'margin-left: 10px;margin-right: 10px;'
-                }).click(function() {
-                    $(this).parent().parent().remove();
-                }));
-            }
-        });
-
-        function imageIsLoaded(e) {
-            $('#previewimg' + abc).attr('src', e.target.result);
-        };
-        $('#upload').click(function(e) {
-            var name = $(":file").val();
-            if (!name) {
-                alert("First Image Must Be Selected");
-                e.preventDefault();
-            }
-        });
-    });
 </script>
